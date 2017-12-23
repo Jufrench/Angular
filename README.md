@@ -74,8 +74,12 @@
 
 ### Dependency Injection
 
+* **A way to supply a new instance of a class with the fully-formed dependencies it requires.**
+* **Most dependencies are services.**
 * Software design pattern that implements inversion o
 * One object is dependent on another object
+* **Services are made available to components through DI**
+* Angular uses dependency injection to provide new components with the service they need.
 * Four rules:
   1. The Service
     * Needs to be injected
@@ -104,7 +108,70 @@
     * Testing becomes feasible
       * You could create mock objects
 
-##### Injection
+###### Injection
   * Passing the dependency to a dependent object
   * Taking an object and making it available to another object, so that the 2nd object can use some of its mechanisms
   * The client doesn't need to build the object
+
+###### Angular can tell which services a component needs by looking at the types of its constructor parameters. For example, the constructor for a ```HeroListComponent``` needs a ```HeroService```:
+
+```
+constructor(private service: HeroService) {}
+```
+  * When Angular creates a component, it first asks an **injector** for the services that the component requires.
+  * An injector maintains a container of service instances that it has previously created.
+  * If  requested service instance is not in the container, the injector makes one and adds it to the container before returning the service to Angular.
+  * When all requested services have been resolved & returned, Angular can call the component's constructor with those services as arguments --> Dependency Injection
+
+  * Injectors know to make services (if it doesn't already have a service) because it should have been previously registered as a **provider**.
+  * **A provider is something that can create or return a service (typically the service class itself)**
+  * You can register providers in modules or components but generally they're added to the **root module** so that the same instance of a service is available everywhere.
+
+#### How to Create a Service
+  * Create a service.
+  * Inject it into your application.
+  * Use it in your components.
+
+ **Adding a Service**
+  1. Create a folder named *services*
+  2. Add a service to the application with the Angular CLI.
+    * Type the following in the prompt:
+
+      ``` ng generate service services/serviceName
+      ```
+    * 2 new files will be created in the *services* folder
+      * serviceName.service.ts
+      * serviceName.service.spec.ts
+    * In the serviceName.service.ts file add:
+
+      ```
+      import { Injectable } from '@angular/core';
+      ```
+      ```
+      @Injectable()
+      export class ServiceName {...
+          }
+      ```
+    * Add the service to the app.module.ts file:
+      ```
+      import { ServiceNameService } from './services/serviceName/service';
+      @NgModule({
+        ...
+        providers: [ServiceName],
+        ...
+        })
+        ```
+    **Using the Service**
+
+      * Update componentName.component.ts file to make use of the service:
+
+      ```
+      import { ServiceName } from '../services/serviceName.service';
+
+      export class ComponentName {
+        constructor(private serviceName: ServiceName) { }
+      }
+      ```
+------
+
+## Routing
