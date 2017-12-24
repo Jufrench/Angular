@@ -50,7 +50,7 @@ const DISH = {
 export class DishdetailComponent implements OnInit {
 
   @Input()
-  dish = DISH;
+  dish: DISH;
 
   constructor() { }
 
