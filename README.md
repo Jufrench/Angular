@@ -32,6 +32,20 @@
 * View model
   * Abstraction of the view that exposes public properties & commands
 ------
+
+------
+## Angular @NgModule
+
+##### declarations (mainly components) (array): (views) the classes displaying data
+  * Here you'll list your components whether they're Angular inherit components or ones you've created yourself.
+##### imports (array)
+  * Here you'll list your modules that you'll need, whether they're Angular inherit or modules that you've created yourself.
+##### providers (services) (array): (models) the classes getting and handling data
+  * Here you'll list your services.
+##### bootstrap (array)
+------
+
+------
 ## Services
 
 * Component classes should be kept lean
@@ -174,4 +188,89 @@ constructor(private service: HeroService) {}
       ```
 ------
 
+## Generate a Header/Footer
+
+  * ng g or ng generate component header
+    * Angular CLI adds to the app.module file the following:
+    ```
+    import { HeaderComponent } from './header/header.component';
+    ```
+    * Also adds *HeaderComponent* to declarations array in @NgModule
+  * Add to your app.component.html file:
+  ```
+  <app-header></app-header>
+  <app-footer></app-footer>
+  ```
+-------
+
+------
 ## Routing
+  * Enable navigation among views
+  * Uses a browser URL as an instruction to navigate among various client-generated views
+    * Can also pass along optional parameters among different views.
+  * Angular router leverages HTML5 history manipulation to modify the browser URL.
+
+###### HTML5 History API
+* Gives developers the ability to modify a website's URL without a full page refresh
+* HTML5 History API Methods:
+  * **pushState()**: Add history entry
+  * **replaceState()**: Modify history entry
+  * Configure ```<base href="/">```
+
+###### Router Terms
+* **Router Module**
+  * Routes
+    * {path: "/home", component: HomeComponent}
+    * Allows defining of various routes that Angular Router will use.
+* **routerOutlet**
+  * Where will the view be rendered in the Angular application?
+  * Within the template of the app component, include the following directive:
+    * ```<router-outlet></router-outlet>```
+* **routerLink**
+  * Enables us to specify a path
+    * ```<a routerLink="/menu"><Menu</a>```
+
+###### Routing Basics (Instructions)
+  * **NOTE**: Consider the button links of a menu bar - Home, About, Contact. Each of these would be supported by using a  **component**.
+    * We use the **Angular Router** module to be able to click between the Home, About, and Contact components.
+
+
+  1. We can use the Angular CLI to create another module.
+    * ```ng g module app-routing```
+    * Angular creates a bare bones module that has no routing logic. That needs to be added.
+
+  2. Insert into app.module.ts:
+    * ```import { AppRoutingModule } from 'path.file';```
+    * In the **@NgModule imports** array add ```AppRoutingModule```
+
+  3. Insert into app-routing.module.ts (your routing module).
+    * ```import { RouterModule, Routes } from '@angular/router';```
+      * This statement is saying that we're going to use the **RouterModule** and the **Routes** module which are inherit in Angular.
+
+  4. Create a ```routes.ts``` file in your routing folder to keep code clean.
+
+  5. Routing syntax
+    * ```export const routes: Routes = [
+      {path: 'home', component: HomeComponent}
+      {path: '', redirectTo: '/home', pathMatch: 'full'}
+    ];```
+      * Routes is an array.
+      * The path is an object.
+        * The above syntax says that the path *home* should take you to the corresponding *HomeComponent*.
+        * When the URL contains *home*, you'll be navigated to the *HomeComponent*.
+      * The default path syntax is the one on the bottom (above)
+
+    6. Import the *routes* constant into the *app-routing.module.ts* file.
+      * The *routes* constant will be passed as a parameter in the RouterModule that's in the *imports* array.
+        * ```RouterModule.forRoot(routes)```
+
+    7. Make the Router Module available in the global scope by adding ```exports: [ RouterModule ]``` as a property in the *@NgModule*.
+
+    8. How to display the view for a routed path when trying to access a particular component.
+      * Angular provides a directive called: ```<router-outlet></router-outlet>```
+      * When this tag is used in the template, Angular knows to use it to for the place where the corresponding views needs to be inserted.
+
+    9. Add click functionality to routes (ex: a menu bar with Home, About, Contact)
+      * The routing module provides an **attribute directive** thats helps with this called **routerLink**
+      * Add the following as an attribute in your **a** tag:
+        * ```routerLink='/home'```
