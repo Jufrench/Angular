@@ -41,37 +41,30 @@
       </div>
 
       <div fxFlex>
-                <md-card>
-                    <blockquote>
-                        <h3>You better cut the pizza in four pieces because
-                            I'm not hungry enough to eat six.</h3>
-                        <footer>-- Yogi Berra,
-                          <cite>The Wit and Wisdom of Yogi Berra,
-                            P. Pepe, Diversion Books, 2014</cite>
-                        </footer>
-                    </blockquote>
-                </md-card>
+        <md-card>
+            <blockquote>
+                <h3>You better cut the pizza in four pieces because
+                    I'm not hungry enough to eat six.</h3>
+                <footer>-- Yogi Berra,
+                  <cite>The Wit and Wisdom of Yogi Berra,
+                    P. Pepe, Diversion Books, 2014</cite>
+                </footer>
+            </blockquote>
+        </md-card>
       </div>
 
 
-        <div fxFlex>
+        <div id="corporate" fxFlex>
           <h2>Corporate Leadership</h2>
-          <!-- <p>Display the details of the corporate leaders here</p> -->
-          <md-card>
-            <md-list *ngIf="leaders">
-              <md-list-item *ngFor="let leader of leaders; let i = index">
-                <!-- Image -->
-                <!-- <img md-card-image src="{{ leader.image }}" alt="{{ leader.name }}"> -->
-                <!-- Name -->
-                <p>{{ leaders.name }}</p>
-                <!-- Abbreviation -->
-                <!-- <p>{{ leader.abbr }}</p> -->
-                <!-- Designation -->
-                <!-- <p md-line>{{ leader.designation }}</p> -->
-                <!-- Description -->
-                <!-- <p md-line>{{ leader.description }}</p> -->
-              </md-list-item>
-            </md-list>
-          </md-card>
+          <md-list *ngIf="leaders">
+            <md-list-item *ngFor="let leader of leaders; let i = index">
+              <img src="{{ leaders[i].image}}" />
+              <div class="leader-text">
+                <p>{{ leaders[i].name }} {{ leaders[i].abbr }}</p>
+                <p>{{ leaders[i].name }} {{ leaders[i].designation }}</p>
+                <p id="description">{{ leaders[i].description }}</p>
+              </div>
+            </md-list-item>
+          </md-list>
        </div>
 </div>
