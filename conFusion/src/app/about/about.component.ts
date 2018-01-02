@@ -11,7 +11,7 @@ import { LEADERS } from '../shared/leaders';
 })
 export class AboutComponent implements OnInit {
 
-  leaders: Leader;
+  leaders: Leader[];
 
   constructor(private leaderservice: LeaderService) { }
 

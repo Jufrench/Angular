@@ -36,16 +36,19 @@ import { AppRoutingModule } from './app-routing/app-routing.module';
     FooterComponent,
     HomeComponent,
     AboutComponent,
-    ContactComponent
+    ContactComponent,
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
     MaterialModule,
     FlexLayoutModule,
-    AppRoutingModule
+    AppRoutingModule,
   ],
   providers: [DishService, PromotionService, LeaderService],
+  // entryComponents: [
+  //   LoginComponent
+  // ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
