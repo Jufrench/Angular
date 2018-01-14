@@ -274,3 +274,13 @@ constructor(private service: HeroService) {}
       * The routing module provides an **attribute directive** thats helps with this called **routerLink**
       * Add the following as an attribute in your **a** tag:
         * ```routerLink='/home'```
+
+
+
+## Random Helpful tips
+
+* When 2 items are next to each other in a tool bar, to achieve the maximum amount of spacing between them, use *flex-spacer* as a class of the first (tag on the left) HTML tag.
+  * ``` <div>
+          <h1 class="flex-spacer">On The Left</h1>
+          <h1>Pushed to the right></h1>
+    ```

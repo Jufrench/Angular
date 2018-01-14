@@ -24,3 +24,7 @@ $background-pale: #D1C4E9;
 .active {
   background-color: $background-moredark;
 }
+
+.flex-spacer {
+  flex: 1 1 auto;
+}

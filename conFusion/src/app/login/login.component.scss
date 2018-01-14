@@ -1,0 +1,52 @@
+@import '~@angular/material/prebuilt-themes/deeppurple-amber.css';
+
+// some basic resets
+
+$lt-gray: #ddd;
+$background-dark: #512DA8;
+$background-light: #9575CD;
+$background-pale: #D1C4E9;
+$background-primary: #673AB7;
+$primary-color-dark:   #512DA8;
+$primary-color:        #673AB7;
+$primary-color-light:  #D1C4E9;
+$primary-color-text:   #FFFFFF;
+$accent-color:         #FFC107;
+$primary-text-color:   #212121;
+$secondary-text-color: #757575;
+$divider-color:        #BDBDBD;
+
+.flex-spacer {
+  flex: 1 1 auto;
+}
+
+.background-primary {
+  background-color: $background-primary;
+  color: $primary-color-text;
+}
+
+// input {
+//   border-style: solid;
+//   border-color: black;
+//   border-width: 2px;
+// }
+
+// md-checkbox {
+//   margin: 10px;
+//   border-style: solid;
+//   border-color: black;
+//   border-width: 2px;
+//   position: absolute;
+//   bottom: 0;
+// }
+//
+// md-input-container {
+//   border-style: solid;
+//   border-color: pink;
+//   border-width: 2px;
+// }
+
+// mat-dialog-container {
+//   margin-bottom: 100px;
+//   z-index: 1;
+// }
